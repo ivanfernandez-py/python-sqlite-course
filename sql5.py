@@ -1,0 +1,22 @@
+# Filtrar datos con WHERE
+
+import sqlite3
+
+conexion = sqlite3.connect("escuela.db")
+cursor = conexion.cursor()
+
+cursor.execute("""
+SELECT * FROM alumnos
+WHERE edad>21
+""")
+
+alumnos = cursor.fetchall()
+
+for alumno in alumnos:
+    print(f"ID: {alumno[0]}")
+    print(f"Nombre: {alumno[1]}")
+    print(f"Edad: {alumno[2]}")
+    print("*")
+
+
+conexion.close()
